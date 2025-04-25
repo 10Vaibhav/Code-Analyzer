@@ -2,7 +2,6 @@ const aiService = require("../services/ai.service")
 
 module.exports.getReview = async (req, res) => {
     try {
-        // Check if req.body exists
         if (!req.body) {
             return res.status(400).send("Request body is missing");
         }
