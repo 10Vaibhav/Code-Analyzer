@@ -2,6 +2,8 @@
 
 A powerful code analysis tool that leverages Google's Gemini AI to provide detailed code reviews and improvements. This project helps developers write better code by analyzing their codebase and providing actionable feedback.
 
+![Code Analyzer Interface](./Output/Code%20Analyzer.png)
+
 ## Features
 
 - 🤖 AI-powered code analysis using Google's Gemini AI
