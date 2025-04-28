@@ -25,49 +25,52 @@ function App() {
   }
 
   return (
-    <div className="h-screen w-full bg-gray-900 flex flex-col">
-      <main className="min-h-screen flex-1 flex flex-col p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
-          <div className="flex flex-col h-full">
-            <div className="bg-gray-800 rounded-lg shadow-lg flex-grow flex flex-col">
-              <div className="p-4 bg-gray-700 text-gray-100">
-                <h2 className="text-lg font-semibold">Code Editor</h2>
+    <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
+      <main className="flex-1 p-6 md:p-8 lg:p-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Code Editor Section */}
+          <div className="flex flex-col">
+            <div className="bg-gray-800 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[calc(100vh-12rem)]">
+              <div className="px-6 py-4 bg-gray-900 border-b border-gray-700">
+                <h2 className="text-xl font-bold text-gray-100">Code Editor</h2>
               </div>
-              <div className="flex-grow flex flex-col p-4">
+              <div className="flex-grow p-4">
                 <Editor
                   value={code}
                   onValueChange={code => setCode(code)}
                   highlight={code => prism.highlight(code, prism.languages.javascript, "javascript")}
-                  padding={10}
+                  padding={12}
                   style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
                     fontSize: 16,
-                    height: "100%",
-                    width: "100%",
-                    backgroundColor: "#1f2937",
+                    minHeight: "100%",
+                    backgroundColor: "transparent",
                     color: "#e5e7eb"
                   }}
-                  className="flex-grow focus:outline-none"
+                  className="w-full h-full focus:outline-none bg-gray-800 rounded-lg"
                 />
               </div>
             </div>
             <button
               onClick={reviewCode}
-              className="w-full cursor-pointer mt-4 bg-purple-600 hover:bg-purple-700 text-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-200 ease-in-out transform hover:scale-101 shadow-md"
+              className="mt-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-102 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
             >
               Review Code
             </button>
           </div>
-          <div className="bg-white rounded-lg shadow-lg h-full flex flex-col">
-            <div className="p-4 bg-slate-400 text-gray-800">
-              <h2 className="text-lg font-semibold">Code Review</h2>
-            </div>
-            <div className="flex-grow p-6 prose prose-sm max-w-none prose-invert overflow-y-auto">
-              <Markdown
-                rehypePlugins={[rehypeHighlight]}
-              >
-                {review}
-              </Markdown>
+          {/* Code Review Section */}
+          <div className="flex flex-col">
+            <div className="bg-gray-800 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[calc(100vh-12rem)]">
+              <div className="px-6 py-4 bg-gray-900 border-b border-gray-700">
+                <h2 className="text-xl font-bold text-gray-100">Analyzed Result</h2>
+              </div>
+              <div className="flex-grow p-6 prose prose-invert max-w-none overflow-y-auto bg-gray-800">
+                <Markdown
+                  rehypePlugins={[rehypeHighlight]}
+                >
+                  {review}
+                </Markdown>
+              </div>
             </div>
           </div>
         </div>
